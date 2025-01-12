@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
-</head>
-<body>
     <script>
         // Get the current URL path
-        const path = window.location.pathname; 
+        const path = window.location.pathname;
 
-        // Redirect to the discord.gg domain with the same path
-        window.location.href = `https://discord.gg${path}`; 
+        // Construct the full URL for redirection
+        const redirectUrl = `https://discord.gg${path}`;
+
+        // Redirect to the constructed URL
+        window.location.href = redirectUrl;
+
+        // Set the og:url meta tag to the redirectUrl
+        const metaOgUrl = document.createElement('meta');
+        metaOgUrl.property = 'og:url';
+        metaOgUrl.content = redirectUrl;
+        document.head.appendChild(metaOgUrl);
     </script>
+    <meta property="og:title" content="Join Server" /> 
+</head>
+<body>
 </body>
 </html>
