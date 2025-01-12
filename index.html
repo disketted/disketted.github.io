@@ -64,11 +64,14 @@
         <script>
             function convertInvite() {
                 const discordInviteInput = document.getElementById('discordInvite');
-                const discordInvite = discordInviteInput.value;
+                let discordInvite = discordInviteInput.value;
 
-                if (discordInvite.startsWith("https://discord.gg/")) {
+                // Remove https:// or http:// if present
+                discordInvite = discordInvite.replace(/^https?:\/\//, "");
+
+                if (discordInvite.includes("discord.gg")) {
                     const discdInvite = discordInvite.replace("discord.gg", "discd.me");
-                    window.location.href = discdInvite;
+                    discordInviteInput.value = discdInvite; // Update the textbox value
                 } else {
                     alert("Please enter a valid discord.gg invite link.");
                 }
