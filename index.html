@@ -53,13 +53,21 @@
         }
 
         #notification {
-            display: none; /* Initially hidden */
-            background-color: #4CAF50; /* Green background */
+            display: none; 
+            background-color: #4CAF50; 
             color: white;
             padding: 10px 20px;
             margin-bottom: 10px;
             border-radius: 5px;
             text-align: center;
+            width: 300px; /* Same width as textbox */
+            transition: opacity 0.5s ease-in-out; /* Add transition for fading */
+            opacity: 0; /* Initially transparent */
+        }
+
+        #notification.show {
+            display: block;
+            opacity: 1; /* Fully opaque when shown */
         }
     </style>
 </head>
@@ -83,9 +91,14 @@
                     const discdInvite = discordInvite.replace("discord.gg", "discd.me");
                     discordInviteInput.value = discdInvite;
 
-                    // Show the notification
-                    notification.textContent = "Converted!";
-                    notification.style.display = "block";
+                // Show the notification
+                    notification.textContent = "Converted, URL below!";
+                    notification.classList.add("show"); // Add the 'show' class
+
+                    // Hide the notification after 2 seconds
+                    setTimeout(() => {
+                        notification.classList.remove("show");
+                    }, 2000);
                 } else {
                     alert("Please enter a valid discord.gg invite link.");
                 }
