@@ -32,6 +32,24 @@
             padding: 30px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center the contents of the container */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2196f3; /* Discord-like blue color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -39,6 +57,23 @@
     <div class="container">
         <h1>Welcome to discd</h1>
         <p>discord.gg invites blocked in your favourite server?<br>Use discd.me! It's as easy as getting the discord.gg invite and replacing the actual 'discord.gg' bit to 'discd.me'!<br><a href="modu.html">Test a discd invite</a></p>
+
+        <input type="text" id="discordInvite" placeholder="Enter discord.gg invite">
+        <button onclick="convertInvite()">Convert discord.gg invite to discd.me</button>
+
+        <script>
+            function convertInvite() {
+                const discordInviteInput = document.getElementById('discordInvite');
+                const discordInvite = discordInviteInput.value;
+
+                if (discordInvite.startsWith("https://discord.gg/")) {
+                    const discdInvite = discordInvite.replace("discord.gg", "discd.me");
+                    window.location.href = discdInvite;
+                } else {
+                    alert("Please enter a valid discord.gg invite link.");
+                }
+            }
+        </script>
     </div>
 </body>
 </html>
